@@ -106,7 +106,7 @@ else if ((millis()-t)>(timePause)) txt=""; // no text displayed
 else txt=lib.get(c); // the text is displayed
 text(txt,x,y);
  
-/*------------------------------------*/
+/*-----------------------------------*/
   
   
   
