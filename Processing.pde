@@ -14,6 +14,8 @@ StringList lib;
 }
 /****************************************************/
 
+//////////////dfklgnelkrgneklrngeklrgnkelrng
+//krgeklnrher
 
 void textParameters(){
     font = createFont("Arial",73,true); // Arial, 16 point, anti-aliasing on
