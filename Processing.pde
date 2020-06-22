@@ -48,31 +48,51 @@ void draw() {
   //fill(0); //also seems to have no effect idk
 
 //start of functionalities  
+//lädt die .txt Datei zeilenweise ein und packt jede Zeile in einen Index des Arrays
 String[] lines = loadStrings("testRezept.txt");
-String[] suchbegriffe = new String [lines.length]; //erstellt String-Array mit allen Suchbegriffen
-String suchbegriff = "";  //hier wird der Suchbegriff gespeichert
+        //Löst den Start aus
+        boolean start = false;
+        //Hier werden die Suchbegriffe für die Datenbank gespeichert
+        String[] searchTermArray = null;
+        //Zum Indexzählen
+        int index = 0;
 
-// Zeilen der txt-Datei durchlaufen und Suchbegriff gefunden
+        //geht jeden Index, also jede Zeile des Rezepts durch und sucht nach dem Startwort "Zubereitung"
+        for (int i = 0; i < lines.length; i++) {
+            if (lines[i].equals("Zubereitung")) {
+                start = true;
+                i = i + 2;
+                searchTermArray = new String[lines.length - i];
+            }
 
+            if (start) {
+                //Wort wird hier immer zurückgesetzt
+                String searchTerm = "";
+                //von uns festgelegt muss das gesuchte Wort ab dem 5. Character der Zeile starten (z. B. "10. " danach einlesen)
+                lines[i] = lines[i].substring(4);
 
-/*----------------------------------------------------*/
-    for (int i = 0 ; i < lines.length; i++) {
-      for(int j=3; j<20; j++){
+                //geht jeden Index, also jede Zeile des Rezepts ab +2 Zeilen nach "Zubereitung" durch
+                for (int countWords = 0, j = 0; j < lines[i].length(); j++) {
+                    //Der jeweilige Buchstabe an der stelle in der Zeile
+                    char letter = lines[i].charAt(j);
 
-    //
-        if(lines[i].charAt(j)!= ' '){
-        String buchstabe = str(lines[i].charAt(j));
-        suchbegriff = suchbegriff + buchstabe;
-        
-        } else { //Leerzeichen gefunden
-      //speicher 1. suchbegriff in array suchbegriffe 
-      suchbegriffe[i]=suchbegriff;
-      suchbegriff="";
-      println(suchbegriffe[i]);
-      break;
+                    if (letter == ' ') {
+                        countWords++;
+                    }
+                    if (countWords == 2) {
+                        break;
+                    }
+                    searchTerm += letter;
+                }
+                //speichert die Worte im Array am genannten Index
+                searchTermArray[index] = searchTerm;
+                index++;
+            }
         }
-      }
-    }
+
+        for (String s : searchTermArray) {
+            println(s);
+        }
 /*----------------------------------------------------*/
     
     
