@@ -58,7 +58,7 @@ String suchbegriff = "";  //hier wird der Suchbegriff gespeichert
 /*----------------------------------------------------*/
     for (int i = 0 ; i < lines.length; i++) {
       for(int j=3; j<20; j++){
-//
+
     //
         if(lines[i].charAt(j)!= ' '){
         String buchstabe = str(lines[i].charAt(j));
