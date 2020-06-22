@@ -1,7 +1,11 @@
+
+  
 PFont font; //object of type PFont
 int timeStay, timePause, t, txtsize, c;
 float x, y;
 StringList lib;
+
+
 
 
 /****************************************************/
@@ -26,7 +30,6 @@ void textParameters(){
       textSize(txtsize);
       textAlign(CENTER);
       textFont(font);
-      text("mitte",500,400);
       
 }
 
@@ -38,17 +41,6 @@ void setup() {
     textParameters();
     lib=textLibrary(); //das wo der Text drin ist, wird später anders
     t = timeStay; 
-
-
-}  
-
-void draw() {
-
-  background(0);
-  //fill(0); //also seems to have no effect idk
-
-//start of functionalities  
-//lädt die .txt Datei zeilenweise ein und packt jede Zeile in einen Index des Arrays
 String[] lines = loadStrings("testRezept.txt");
         //Löst den Start aus
         boolean start = false;
@@ -94,6 +86,17 @@ String[] lines = loadStrings("testRezept.txt");
             println(s);
         }
 /*----------------------------------------------------*/
+
+}  
+
+void draw() {
+
+  background(0);
+  //fill(0); //also seems to have no effect idk
+
+//start of functionalities  
+//lädt die .txt Datei zeilenweise ein und packt jede Zeile in einen Index des Arrays
+
     
     
 String txt="";
@@ -106,7 +109,7 @@ else if ((millis()-t)>(timePause)) txt=""; // no text displayed
 else txt=lib.get(c); // the text is displayed
 text(txt,x,y);
  
-/*-----------------------------------*/
+/*------------------------------------*/
   
   
   
