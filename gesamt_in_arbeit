@@ -1,5 +1,4 @@
 String[] lines= {};
-
 //Löst den Start aus
 boolean start = false;
 //Hier werden die Suchbegriffe für die Datenbank gespeichert
@@ -30,6 +29,12 @@ void setup() {
   lines = loadStrings("testRezept.txt");
   textParameters();
   t = timeStay;
+  searchterms();
+  
+  for(int i=0;i<searchTermArray.length;i++){
+    println(searchTermArray[i]);
+  }
+
 }  
 
 String[] searchterms(){
