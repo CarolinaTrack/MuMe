@@ -10,6 +10,7 @@ import java.awt.Image;
 import processing.video.*;
 import java.io.*;
 import processing.core.PApplet;
+import com.hamoid.*;
 
 int textDuration=3000;
 int globalfor = 0;
@@ -36,13 +37,24 @@ File file;
 File dir;
 Movie [] movArray={};
 Movie currentMovie;
+VideoExport videoExport;
+// Press 'q' to finish saving the movie and exit.
+
+// In some systems, if you close your sketch by pressing ESC, 
+// by closing the window, or by pressing STOP, the resulting 
+// movie might be corrupted. If that happens to you, use
+// videoExport.endMovie() like you see in this example.
+
+// In other systems pressing ESC produces correct movies
+// and .endMovie() is not necessary.
+
 
 void setup()
 {
   size(1920, 1080);
   background(0);
   //lädt die .txt Datei zeilenweise ein und packt jede Zeile in einen Index des Arrays
-  lines = loadStrings("testRezept.txt");
+  lines = loadStrings("Bratkartoffeln.txt");
   textParameters();
   t = timeStay;
   searchterms();
@@ -96,6 +108,8 @@ void setup()
     e.printStackTrace();
   }
   /****************************************************************************/
+  videoExport = new VideoExport(this,"E:\\Documents\\Aaron\\htw\\4. Semester\\mume\\Bratkartoffeln.mp4");
+  videoExport.startMovie();
 }  
 
 void textParameters() {
@@ -161,6 +175,7 @@ String[] searchterms() {
 void movieEvent(Movie m) {
   m.read();
 }
+ 
 
 void draw()
 {
@@ -194,5 +209,10 @@ void draw()
         globalfortimestart = 0;
       }
     }
+    videoExport.saveFrame();
+  } else
+  {
+    videoExport.endMovie();
+    exit();
   }
 }
