@@ -1,4 +1,4 @@
-# MuMe-Projekt
+# Multimedia-Projektarbeit
 
 Dieses Repository enthält alle Projektdateien, sowie weitere Dokumente zur Dokumentation des Projektes.
-Dokumentations-Dokumente sind gekennzeichnet mit #Doku.
+Dateien, die zur Dokumentation gehören, befinden sich im Ordner "Dokumentation". 
